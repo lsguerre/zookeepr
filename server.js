@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
@@ -7,16 +6,9 @@ const { animals } = require('./data/animals');
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-app.use(express.static('public'))
+app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-=======
-const express = require('express');
-const { animals } = require('./data/animals.json');
-
-const PORT = process.env.PORT || 3001;
-const app = express();
->>>>>>> 086395501f2bd7841f326866cde34718785220b6
 
 function filterByQuery(query, animalsArray) {
   let personalityTraitsArray = [];
@@ -38,17 +30,10 @@ function filterByQuery(query, animalsArray) {
   }
   if (query.species) {
     filteredResults = filteredResults.filter(animal => animal.species === query.species);
-<<<<<<< HEAD
   }
   if (query.name) {
     filteredResults = filteredResults.filter(animal => animal.name === query.name);
   }
-=======
-  }
-  if (query.name) {
-    filteredResults = filteredResults.filter(animal => animal.name === query.name);
-  }
->>>>>>> 086395501f2bd7841f326866cde34718785220b6
   return filteredResults;
 }
 
@@ -56,7 +41,6 @@ function findById(id, animalsArray) {
   const result = animalsArray.filter(animal => animal.id === id)[0];
   return result;
 }
-<<<<<<< HEAD
 
 function createNewAnimal(body, animalsArray) {
   const animal = body;
@@ -83,8 +67,6 @@ function validateAnimal(animal) {
   }
   return true;
 }
-=======
->>>>>>> 086395501f2bd7841f326866cde34718785220b6
 
 app.get('/api/animals', (req, res) => {
   let results = animals;
@@ -103,7 +85,6 @@ app.get('/api/animals/:id', (req, res) => {
   }
 });
 
-<<<<<<< HEAD
 app.post('/api/animals', (req, res) => {
   // set id based on what the next index of the array will be
   req.body.id = animals.length.toString();
@@ -117,11 +98,8 @@ app.post('/api/animals', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, './public/index.html'))
-})
-=======
-
->>>>>>> 086395501f2bd7841f326866cde34718785220b6
+  res.sendFile(path.join(__dirname, './public/index.html'));
+});
 
 app.get('/animals', (req, res) => {
   res.sendFile(path.join(__dirname, './public/animals.html'));
